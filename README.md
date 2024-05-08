@@ -2,24 +2,14 @@
 
 ![CyberRT](./docs/CyberRT.gif)
 
-| Target        |  CI Status  |
-| ------------- | :-----:|
-| Ubuntu18.04 x86-64   | [![build v9.0.0](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu18-v9.0.0-build.yaml/badge.svg?branch=v9.0.0)](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu18-v9.0.0-build.yaml) |
-| Ubuntu20.04 x86-64  | [![build v9.0.0](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu20-v9.0.0-build.yaml/badge.svg?branch=v9.0.0)](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu20-v9.0.0-build.yaml) |
-| Ubuntu22.04 x86-64  | [![build v9.0.0](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu22-v9.0.0-build.yaml/badge.svg?branch=v9.0.0)](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu22-v9.0.0-build.yaml) |
-| Ubuntu latest x86-64  | [![build v9.0.0](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu-latest-v9.0.0-build.yaml/badge.svg?branch=v9.0.0)](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu-latest-v9.0.0-build.yaml) |
-| Ubuntu18.04 arrch64 | [![build v9.0.0](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu18-arrch64-v9.0.0-build.yaml/badge.svg?branch=v9.0.0)](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu18-arrch64-v9.0.0-build.yaml) |
-| Ubuntu20.04  arrch64 | [![build v9.0.0](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu20-arrch64-v9.0.0-build.yaml/badge.svg?branch=v9.0.0)](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu20-arrch64-v9.0.0-build.yaml) |
-| Ubuntu22.04 arrch64 | [![build v9.0.0](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu22-arrch64-v9.0.0-build.yaml/badge.svg?branch=v9.0.0)](https://github.com/minhanghuang/CyberRT/actions/workflows/ubuntu22-arrch64-v9.0.0-build.yaml) |
-
 ## #1 Env
 
 > dependence
 
 ```shell
 sudo apt update
-sudo apt install -y libpoco-dev uuid-dev libncurses5-dev python3-dev python3-pip
-python3 -m pip install protobuf==3.14.0
+sudo apt install -y libpoco-dev uuid-dev libncurses5-dev # python3-dev python3-pip
+# python3 -m pip install protobuf==3.14.0
 ```
 
 ## #2 Build
@@ -27,7 +17,7 @@ python3 -m pip install protobuf==3.14.0
 1. clone
 
 ```shell
-git clone --single-branch --branch v9.0.0 https://github.com/minhanghuang/CyberRT.git
+git clone https://github.com/frankwang98/CyberRT.git
 cd CyberRT
 ```
 
@@ -36,7 +26,7 @@ cd CyberRT
 > install
 
 ```shell
-sudo python3 install.py
+sudo python3 install.py # 已将github地址添加代理
 ```
 
 > export path

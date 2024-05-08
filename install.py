@@ -61,7 +61,7 @@ class Install:
 
     def _clone_setup(self):
         self._clone_github_repo(
-            "https://github.com/minhanghuang/setup.git",
+            "https://gh-proxy.com/https://github.com/minhanghuang/setup.git",
             "setup",
             "--depth=1"
         )
@@ -75,7 +75,7 @@ class Install:
 
     def _clone_nlohmann_json(self):
         self._clone_github_repo(
-            "https://github.com/nlohmann/json.git",
+            "https://gh-proxy.com/https://github.com/nlohmann/json.git",
             "nlohmann_json",
             "--depth=1"
         )
@@ -89,7 +89,7 @@ class Install:
 
     def _clone_tinyxml2(self):
         self._clone_github_repo(
-            "https://github.com/leethomason/tinyxml2.git",
+            "https://gh-proxy.com/https://github.com/leethomason/tinyxml2.git",
             "tinyxml2",
             "--single-branch",
             "--branch=8.0.0",
@@ -105,33 +105,33 @@ class Install:
 
     def _clone_gfamily(self):
         self._clone_github_repo(
-            "https://github.com/gflags/gflags.git",
+            "https://gh-proxy.com/https://github.com/gflags/gflags.git",
             "gflags",
             "--single-branch",
             "--branch=v2.2.0",
             "--depth=1"
         )
         self._clone_github_repo(
-            "https://github.com/google/glog.git",
+            "https://gh-proxy.com/https://github.com/google/glog.git",
             "glog",
             "--single-branch",
             "--branch=v0.4.0",
             "--depth=1"
         )
         self._clone_github_repo(
-            "https://github.com/google/googletest.git",
+            "https://gh-proxy.com/https://github.com/google/googletest.git",
             "googletest",
             "--single-branch",
             "--branch=release-1.10.0",
             "--depth=1"
         )
-        self._clone_github_repo(
-            "https://github.com/protocolbuffers/protobuf.git",
-            "protobuf",
-            "--single-branch",
-            "--branch=v3.14.0",
-            "--depth=1"
-        )
+        # self._clone_github_repo(
+        #     "https://github.com/protocolbuffers/protobuf.git",
+        #     "protobuf",
+        #     "--single-branch",
+        #     "--branch=v3.14.0",
+        #     "--depth=1"
+        # )
 
         os.chdir(os.path.join(self._dowload_path, "gflags"))
         self._cmd("mkdir -p build")
