@@ -23,7 +23,17 @@
 namespace apollo {
 namespace cyber {
 
+/**
+ * @brief init cyber
+ * @param binary_name 
+ * @return true 
+ * @return false 
+ */
 bool Init(const char* binary_name);
+
+/**
+ * @brief clear state
+ */
 void Clear();
 
 }  // namespace cyber

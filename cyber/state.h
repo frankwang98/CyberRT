@@ -38,21 +38,46 @@ enum State : std::uint8_t {
   STATE_SHUTDOWN,
 };
 
+/**
+ * @brief Get the State object
+ * @return State 
+ */
 State GetState();
+
+/**
+ * @brief Set the State object
+ * @param state 
+ */
 void SetState(const State& state);
 
+/**
+ * @brief OK
+ * @return true 
+ * @return false 
+ */
 inline bool OK() { return GetState() == STATE_INITIALIZED; }
 
+/**
+ * @brief is shutdown
+ * @return true 
+ * @return false 
+ */
 inline bool IsShutdown() {
   return GetState() == STATE_SHUTTING_DOWN || GetState() == STATE_SHUTDOWN;
 }
 
+/**
+ * @brief wait for shutdown
+ */
 inline void WaitForShutdown() {
   while (!IsShutdown()) {
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
 }
 
+/**
+ * @brief async shutdown
+ */
 inline void AsyncShutdown() {
   pid_t pid = getpid();
   if (kill(pid, SIGINT) != 0) {

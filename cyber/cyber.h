@@ -32,6 +32,12 @@
 namespace apollo {
 namespace cyber {
 
+/**
+ * @brief Create a Node object
+ * @param node_name 
+ * @param name_space 
+ * @return std::unique_ptr<Node> 
+ */
 std::unique_ptr<Node> CreateNode(const std::string& node_name,
                                  const std::string& name_space = "");
 

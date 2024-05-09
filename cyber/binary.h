@@ -22,7 +22,18 @@
 namespace apollo {
 namespace cyber {
 namespace binary {
+
+/** 经典的 get 和 set **/
+/**
+ * @brief Get the Name object
+ * @return std::string 
+ */
 std::string GetName();
+
+/**
+ * @brief Set the Name object
+ * @param name 
+ */
 void SetName(const std::string& name);
 }  // namespace binary
 }  // namespace cyber
