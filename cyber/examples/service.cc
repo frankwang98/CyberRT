@@ -21,9 +21,12 @@
 using apollo::cyber::examples::proto::Driver;
 
 int main(int argc, char* argv[]) {
+  // init
   apollo::cyber::Init(argv[0]);
+  // create node
   std::shared_ptr<apollo::cyber::Node> node(
       apollo::cyber::CreateNode("start_node"));
+  // create service and client
   auto server = node->CreateService<Driver, Driver>(
       "test_server", [](const std::shared_ptr<Driver>& request,
                         std::shared_ptr<Driver>& response) {

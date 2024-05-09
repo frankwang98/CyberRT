@@ -3,6 +3,7 @@ load("//tools:apollo_package.bzl", "apollo_package", "apollo_cc_binary")
 
 package(default_visibility = ["//visibility:public"])
 
+# talker
 apollo_cc_binary(
     name = "talker",
     srcs = ["talker.cc"],
@@ -12,6 +13,7 @@ apollo_cc_binary(
     ],
 )
 
+# listener
 apollo_cc_binary(
     name = "listener",
     srcs = ["listener.cc"],
@@ -21,6 +23,7 @@ apollo_cc_binary(
     ],
 )
 
+# paramserver
 apollo_cc_binary(
     name = "paramserver",
     srcs = ["paramserver.cc"],
@@ -29,6 +32,7 @@ apollo_cc_binary(
     ],
 )
 
+# service
 apollo_cc_binary(
     name = "service",
     srcs = ["service.cc"],
@@ -38,6 +42,7 @@ apollo_cc_binary(
     ],
 )
 
+# record
 apollo_cc_binary(
     name = "record",
     srcs = ["record.cc"],

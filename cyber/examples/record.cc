@@ -37,6 +37,10 @@ const char PROTO_DESC[] = "1234567890";
 const char STR_10B[] = "1234567890";
 const char TEST_FILE[] = "test.record";
 
+/**
+ * @brief write
+ * @param writefile 
+ */
 void test_write(const std::string &writefile) {
   RecordWriter writer;
   writer.SetSizeOfFileSegmentation(0);
@@ -50,6 +54,10 @@ void test_write(const std::string &writefile) {
   writer.Close();
 }
 
+/**
+ * @brief read
+ * @param readfile 
+ */
 void test_read(const std::string &readfile) {
   RecordReader reader(readfile);
   RecordMessage message;
@@ -76,6 +84,7 @@ void test_read(const std::string &readfile) {
 }
 
 int main(int argc, char *argv[]) {
+  // init
   apollo::cyber::Init(argv[0]);
   test_write(TEST_FILE);
   sleep(1);
