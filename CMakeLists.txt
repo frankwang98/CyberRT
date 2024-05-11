@@ -36,6 +36,7 @@ else()
   message("### SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR} ${CROUTINE_FILE}")
 endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
 
+# some lib
 find_package(Threads REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(fastrtps REQUIRED)
@@ -99,6 +100,7 @@ include_directories(
 
 link_directories(${DEPENCENCY_LIB_DIRS})
 
+# find all proto file and protoc build
 file(GLOB CYBER_PROTO_FILES
   "${CMAKE_CURRENT_SOURCE_DIR}/modules/common_msgs/**/*.proto"
   "${CMAKE_CURRENT_SOURCE_DIR}/cyber/proto/*.proto"
@@ -132,6 +134,7 @@ file(GLOB CYBER_PROTO_SRCS
     "modules/common_msgs/**/*.pb.h"
 )
 
+# all sources
 file(GLOB CYBER_SRCS
     "cyber/base/*.cc"
     "cyber/blocker/*.cc"

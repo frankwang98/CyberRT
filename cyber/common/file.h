@@ -15,7 +15,7 @@
  *****************************************************************************/
 
 /**
- * @file
+ * @file 一些文件操作和proto操作
  */
 
 #ifndef CYBER_COMMON_FILE_H_
@@ -48,6 +48,13 @@ namespace common {
 // file type: file or directory
 enum FileType { TYPE_FILE, TYPE_DIR };
 
+/**
+ * @brief 函数重载
+ * @param message 
+ * @param file_descriptor 
+ * @return true 
+ * @return false 
+ */
 bool SetProtoToASCIIFile(const google::protobuf::Message &message,
                          int file_descriptor);
 /**

@@ -7,6 +7,12 @@ import time
 class Install:
 
     def __init__(self, platform, install_prefix) -> None:
+        """init: get the current path, the home path, the dowload path, the install path
+
+        Args:
+            platform (_type_): _description_
+            install_prefix (_type_): _description_
+        """
         self._machine = platform
         self._home_path = os.path.expanduser("~")
         self._current_path = os.path.abspath(os.path.dirname(__file__))
@@ -21,9 +27,9 @@ class Install:
         self.environment = self._load_environment()
 
     def _load_environment(self):
-        '''
-            In case of cross-compilation, we need to load the environment setup file
-        :return: env
+        ''' In case of cross-compilation, we need to load the environment setup file
+        
+        return: env
         '''
         env = os.environ.copy()
         return env
@@ -35,6 +41,8 @@ class Install:
         subprocess.run(command, shell=True, env=self.environment)
 
     def start(self):
+        """start setup and clone respositories
+        """
         self._clone_setup()
         self._clone_nlohmann_json()
         self._clone_tinyxml2()
@@ -42,6 +50,15 @@ class Install:
         self._clone_dds()
 
     def _clone_github_repo(self, repo_url, repo_name, *args):
+        """clone github repo
+
+        Args:
+            repo_url (string): _description_
+            repo_name (string): _description_
+
+        Returns:
+            _type_: _description_
+        """
         dowload_path = os.path.join(self._dowload_path, repo_name)
         if os.path.exists(dowload_path):
             print("repo exists: {}".format(dowload_path))
@@ -56,10 +73,17 @@ class Install:
         subprocess.run(command, shell=True)
 
     def _cmd(self, command):
+        """执行系统命令
+
+        Args:
+            command (_type_): _description_
+        """
         print("[command] {}".format(command))
         subprocess.run(command, shell=True)
 
     def _clone_setup(self):
+        """setup env
+        """
         self._clone_github_repo(
             "https://gh-proxy.com/https://github.com/minhanghuang/setup.git",
             "setup",
@@ -74,6 +98,8 @@ class Install:
         os.chdir(self._current_path)
 
     def _clone_nlohmann_json(self):
+        """json
+        """
         self._clone_github_repo(
             "https://gh-proxy.com/https://github.com/nlohmann/json.git",
             "nlohmann_json",
@@ -88,6 +114,8 @@ class Install:
         os.chdir(self._current_path)
 
     def _clone_tinyxml2(self):
+        """tinyxml2
+        """
         self._clone_github_repo(
             "https://gh-proxy.com/https://github.com/leethomason/tinyxml2.git",
             "tinyxml2",
@@ -104,6 +132,8 @@ class Install:
         os.chdir(self._current_path)
 
     def _clone_gfamily(self):
+        """gflags and glog and googletest
+        """
         self._clone_github_repo(
             "https://gh-proxy.com/https://github.com/gflags/gflags.git",
             "gflags",
@@ -160,15 +190,15 @@ class Install:
         self._cmd("make install -j$(nproc)")
         os.chdir(self._current_path)
 
-        os.chdir(os.path.join(self._dowload_path, "protobuf"))
-        os.chdir("cmake")
-        self._cmd("mkdir -p build")
-        os.chdir("build")
-        self._cmd(
-            "cmake -Dprotobuf_BUILD_SHARED_LIBS=ON -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX={} ..".format(
-                self._install_prefix))
-        self._cmd("make install -j$(nproc)")
-        os.chdir(self._current_path)
+        # os.chdir(os.path.join(self._dowload_path, "protobuf"))
+        # os.chdir("cmake")
+        # self._cmd("mkdir -p build")
+        # os.chdir("build")
+        # self._cmd(
+        #     "cmake -Dprotobuf_BUILD_SHARED_LIBS=ON -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX={} ..".format(
+        #         self._install_prefix))
+        # self._cmd("make install -j$(nproc)")
+        # os.chdir(self._current_path)
 
     def _clone_dds(self):
         # self._clone_github_repo(
@@ -188,6 +218,7 @@ class Install:
         #         self._install_prefix))
         # os.chdir(self._current_path)
 
+        # 根据平台下载对应版本的dds
         dds_name = "fast-rtps-1.5.0-1.prebuilt.x86_64.tar.gz"
         if "x86_64" == self._machine:
             pass
@@ -208,6 +239,11 @@ class Install:
         os.chdir(self._current_path)
 
 def parse_config():
+    """parse config
+
+    Returns:
+        _type_: _description_
+    """
     parser = argparse.ArgumentParser(description="install")
     parser.add_argument("--platform", type=str, default="x86_64", help="platform")
     parser.add_argument("--install_prefix", type=str, default="install", help="install prefix")

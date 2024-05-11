@@ -26,6 +26,7 @@ cd CyberRT
 > install
 
 ```shell
+# 学习下install.py安装第三方库和环境配置的方式
 sudo python3 install.py # 已将github地址添加代理
 ```
 
